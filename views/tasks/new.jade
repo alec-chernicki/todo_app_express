@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  h1 New Task
+
+  form(method='POST', action='/tasks')
+    fieldset
+      legend Add a task
+      .form-group
+        label Task
+        input(name='task', class='form-control')
+      input(type='submit', value='Save', class='btn btn-primary')
+      a(href="/tasks" class='btn btn-default') Cancel

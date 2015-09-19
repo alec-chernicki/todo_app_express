@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  -if(typeof flash != 'undefined')
+    include ../mixins/flash-messages
+    mixin flash-messages(flash)
+
+  h1 My Todo List
+
+  - if(tasks.length)
+    table.table
+      tr
+        th Task
+        th &nbsp;
+        th &nbsp;
+          each task in tasks
+            tr
+              td #{task.task}
+              td
+                a.btn.btn-default(href='/tasks/#{task.id}/edit') Edit
+              td
+                form(method='POST', action='/tasks/' + task.id + '?_method=DELETE')
+                  button.btn(type='submit') Delete
+  - else
+    p You don't have any tasks!
+
+  p
+    a(href='/tasks/new', class='btn btn-primary') Add a Task

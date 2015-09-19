@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  h1 Edit Task
+
+  form(method='post', action='/tasks/' + task.id + '?_method=PUT')
+    fieldset
+      legend Editing task
+      .form-group
+        label Task
+        input(name='task', class='form-control', value="#{task.task}")
+      input(type='submit', value='Save', class='btn btn-primary')
+      a(href="/tasks" class='btn btn-default') Cancel
+
+
+
+
